@@ -1,0 +1,15 @@
+<div class="wrap">
+    <!-- TABS -->
+
+    {{# has_flash}}
+        {{ }}
+    {{/ has_flash}}
+
+    <form action="options.php">
+
+        {{{wp_settings_fields option_group="origin_theme_settings"}}}
+        {{{wp_do_settings_sections page="origin"}}}
+
+        {{{wp_submit_button}}}
+    </form>
+</div>

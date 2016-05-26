@@ -1,0 +1,25 @@
+{{#has_container}}
+  {{#if has_container_id_class}}
+<{{container}} id="{{container_id}}" class="{{container_class}}">
+  {{else if has_container_id}}
+<{{container}} id="{{container_id}}">
+  {{else if has_container_class}}
+<{{container}} class="{{container_class}}">
+  {{else}}
+<{{container}}>
+  {{/if}}
+{{/has_container}}
+{{#if has_menu_id_class}}
+<ul id="{{menu_id}}" class="{{menu_class}}">
+{{else if has_menu_id}}
+<ul id="{{menu_id}}">
+{{else if has_menu_class}}
+<ul class="{{menu_class}}">
+{{else}}
+<ul>
+{{/if}}
+  <li class="nav-item"><a class="nav-link btn btn-lg btn-error" href="{{wp_admin_url path='nav-menus.php'}}">Create or Assign <strong><em>{{menu_theme_location}}</em></strong></a></li>
+</ul>
+{{#has_container}}
+</{{container}}>
+{{/has_container}}

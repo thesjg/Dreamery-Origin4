@@ -1,0 +1,6 @@
+<li class="nav-item {{classes}} {{# has_children}}dropdown{{/ has_children}}">
+    <a class="nav-link {{# has_children}}dropdown-toggle{{/ has_children}}" {{# has_children}}data-toggle="dropdown"{{/ has_children}} href="{{url}}"{{# has_target}} target="{{target}}"{{/has_target}}{{# has_attr_title}}{{attr_title}}{{/ has_attr_title}}>{{title}}</a>
+    {{# has_children}}
+    {{> navigation-menu-level}}
+    {{/ has_children}}
+</li>

@@ -1,0 +1,14 @@
+{
+    "name": "dreamery/wp-origin4-theme",
+    "authors": [
+        {
+            "name": "Samuel J. Greear",
+            "email": "sjg@thesjg.com"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "^3.3",
+        "zordius/lightncandy": "^0.93.0",
+        "leafo/scssphp": "^0.6.3"
+    }
+}
