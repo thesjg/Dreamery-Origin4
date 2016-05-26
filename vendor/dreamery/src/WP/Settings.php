@@ -54,7 +54,7 @@ class Settings {
         if (array_key_exists($name, $this->settings)) {
             return $this->settings[$name];
         } else if (array_key_exists($name, $this->defaults)) {
-            return ($this->defaults[$name]);
+            return $this->defaults[$name];
         }
 
         /*
@@ -67,6 +67,13 @@ class Settings {
 
     public function setDefaults(array $defaults) {
         $this->defaults = $defaults;
+    }
+
+    public function getDefault($name) {
+        if (array_key_exists($name, $this->defaults))
+            return $this->defaults[$name];
+
+        return false;
     }
 
     public function __sleep() {
