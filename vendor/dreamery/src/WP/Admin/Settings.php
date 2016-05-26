@@ -11,7 +11,7 @@ class Settings
         'general' => array(
             'name' => 'General Settings',
             'keys' => array(
-                'origin_theme_layout' => array('name' => 'Layout', 'type' => 'select'),
+                'origin_theme_layout' => array('name' => 'Layout', 'type' => 'select', 'options' => array('boxed', 'fluid')),
                 'origin_theme_excerpt_length' => array('name' => 'Excerpt Length', 'type' => 'number'),
                 'origin_theme_title_separator' => array('name' => 'Title Separator', 'type' => 'text'),
                 'origin_theme_analytics_gacode' => array('name' => 'Google Analytics UA Code', 'type' => 'text'),
@@ -66,13 +66,13 @@ class Settings
 
     public static function registerSettings() {
 
-        register_setting('origin_theme_settings', 'origin_theme_settings', '//origin_theme_options_validate');
+        register_setting('origin_theme_settings', 'origin_theme_settings', __CLASS__ . '::validate');
 
         foreach (self::$settings as $section_name => $section_data) {
             add_settings_section('origin_settings_theme_' . $section_name, $section_data['name'], __CLASS__ . '::renderSection', 'origin');
             foreach ($section_data['keys'] as $setting_key => $setting_data) {
                 add_settings_field($setting_key, $setting_data['name'], function($args) use ($setting_data, $setting_key){
-                    self::renderField($setting_data['type'], $setting_key, $args);
+                    self::renderField($setting_data, $setting_key, $args);
                 }, 'origin', 'origin_settings_theme_' . $section_name);
             }
         }
@@ -97,13 +97,44 @@ class Settings
         echo $t->render('settings-section', $options);
     }
 
-    public static function renderField($type, $field, $args) {
+    public static function renderField($data, $field, $args) {
         $settings = \Dreamery\WP\Settings::getInstance();
         $options = array(
-            'value' =>      $settings->$field,
-            'default' =>    $settings->getDefault($field),
+            'value'     =>      $settings->$field,
+            'default'   =>      $settings->getDefault($field),
+            'name'      =>      'origin_theme_settings[' . $field . ']',
         );
+        if ($data['type'] == 'select') {
+            $options['options'] = array();
+            foreach ($data['options'] as $option) {
+                $t_option['name'] = $option;
+                $t_option['is_selected'] = false;
+                if ($option == $options['default']) {
+                    $t_option['is_selected'] = true;
+                }
+                $options['options'][] = $t_option;
+            }
+        } else {
+            if ($options['value'] == $options['default']) {
+                $options['placeholder'] = $options['value'];
+                unset($options['value']);
+            }
+        }
+
         $t = new \Dreamery\Template();
-        echo $t->render('settings-field-' . $type, $options);
+        echo $t->render('settings-field-' . $data['type'], $options);
+    }
+
+    public static function validate($input) {
+        $valid = array();
+        foreach ($input as $skey => $sval) {
+            $sval = trim($sval);
+            if (empty($sval)) {
+                continue;
+            }
+
+            $valid[$skey] = $sval;
+        }
+        return $valid;
     }
 }

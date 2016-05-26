@@ -21,7 +21,7 @@ class Settings {
         if (self::$instance === null) {
             self::$instance = new self();
 
-            $settings = get_option('dreamery_settings');
+            $settings = get_option('origin_theme_settings');
             if ($settings !== false && is_array($settings)) {
                 foreach ($settings as $skey => $sval) {
                     self::$instance->$skey = $sval;
