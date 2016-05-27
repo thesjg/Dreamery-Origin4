@@ -17,6 +17,7 @@ class Settings
                 'origin_theme_analytics_gacode' => array('name' => 'Google Analytics UA Code', 'type' => 'text'),
                 'origin_theme_injection_header' => array('name' => 'Header Extras (JS/CSS)', 'type' => 'textarea'),
                 'origin_theme_injection_bodyclose' => array('name' => 'Before Body Close Extras', 'type' => 'textarea'),
+//                'origin_theme_compile_scss' => array('name' => 'Compile SCSS', 'type' => 'boolean'),
             )
         ),
         'font' => array(

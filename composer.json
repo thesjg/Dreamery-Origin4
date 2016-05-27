@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "twbs/bootstrap": "^3.3",
+/*        "twbs/bootstrap": "^3.3", */
         "zordius/lightncandy": "^0.93.0",
         "leafo/scssphp": "^0.6.3"
     }

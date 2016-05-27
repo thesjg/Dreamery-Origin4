@@ -1,0 +1,18 @@
+/*
+$brand-primary:             dreamerysetting('origin_theme_color_brand_primary');
+$brand-success:             dreamerysetting('origin_theme_color_brand_success');
+$brand-info:                dreamerysetting('origin_theme_color_brand_info');
+$brand-warning:             dreamerysetting('origin_theme_color_brand_warning');
+$brand-danger:              dreamerysetting('origin_theme_color_brand_danger');
+*/
+$body-bg:                   dreamerysetting('origin_theme_color_body_background');
+$font-family-base:          dreamerysetting('origin_theme_font_family_base');
+$font-size-base:            dreamerysetting('origin_theme_font_size_base');
+$font-size-h1:              dreamerysetting('origin_theme_font_size_h1');
+$font-size-h2:              dreamerysetting('origin_theme_font_size_h2');
+$font-size-h3:              dreamerysetting('origin_theme_font_size_h3');
+$font-size-h4:              dreamerysetting('origin_theme_font_size_h4');
+$font-size-h5:              dreamerysetting('origin_theme_font_size_h5');
+$font-size-h6:              dreamerysetting('origin_theme_font_size_h6');
+
+@import 'bootstrap';

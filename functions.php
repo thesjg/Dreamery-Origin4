@@ -11,19 +11,65 @@ if (1) {
     require get_template_directory() . '/vendor/dreamery/autoload.php';
 }
 
+//require(get_template_directory() . '/vendor/leafo/scssphp/scss.inc.php');
+function origin_style_loader_filter($src) {
+    static $i = 0;
 
-if (!function_exists('origin_enqueue_styles')) {
-    function origin_enqueue_styles()
-    {
-        //wp_enqueue_style('bootstrap', get_template_directory_uri() . '/vendor/twbs/bootstrap/dist/css/bootstrap.min.css');
-        wp_enqueue_style('bootstrap4', '//v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css');
+    list($path) = explode('?', $src);
+    if (substr($path, -4, 4) == 'scss') {
+
+        $cache_dir = ABSPATH . '/wp-content/cache/';
+        if (!is_dir($cache_dir))
+            mkdir($cache_dir);
+
+        $scss_dirs = array();
+        if (get_stylesheet_directory() != get_template_directory()) {
+            $scss_dirs[] = get_stylesheet_directory() . '/vendor/twbs/bootstrap/scss';
+            $scss_dirs[] = get_template_directory() . '/vendor/twbs/bootstrap/scss';
+            $scss_dirs[] = get_stylesheet_directory() . '/assets/scss';
+            $scss_dirs[] = get_template_directory() . '/assets/scss';
+            $scss_dirs[] = get_stylesheet_directory() . '/';
+            $scss_dirs[] = get_template_directory() . '/';
+        } else {
+            $scss_dirs[] = get_stylesheet_directory() . '/vendor/twbs/bootstrap/scss';
+            $scss_dirs[] = get_stylesheet_directory() . '/assets/scss';
+            $scss_dirs[] = get_stylesheet_directory() . '/';
+        }
+
+        $compiler = new Leafo\ScssPhp\Compiler();
+        $compiler->setImportPaths($scss_dirs);
+
+        $compiler->registerFunction('dreamerysetting', function($args) {
+            return Dreamery\WP\Settings::getInstance()->$args[0][2][0];
+        });
+
+        $source = file_get_contents($path);
+        $scss = $compiler->compile($source);
+
+        $fileid = 'dreamery-sass-' . $i;
+        file_put_contents($cache_dir . '/' . $fileid . '.css', $scss);
+        wp_enqueue_style($fileid, site_url('/wp-content/cache/' . $fileid . '.css'));
+        $i++;
+
+        return null;
+    }
+
+    return $src;
+}
+add_filter('style_loader_src', 'origin_style_loader_filter');
+
+if (!function_exists('origin_enqueue_assets')) {
+    function origin_enqueue_assets() {
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/style.scss');
+//        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/vendor/twbs/bootstrap/scss/bootstrap.scss');
+//        wp_enqueue_style('bootstrap4', '//v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css');
         wp_enqueue_style('dreamery-origin', get_template_directory_uri() . '/style.css', array('bootstrap4'));
 
         wp_enqueue_script('tether', '//raw.githubusercontent.com/HubSpot/tether/master/dist/js/tether.min.js');
         wp_enqueue_script('bootstrap4', '//v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js', array('jquery', 'tether'));
     }
 
-    add_action('wp_enqueue_scripts', 'origin_enqueue_styles');
+    add_action('wp_enqueue_scripts', 'origin_enqueue_assets');
 }
 
 if (!function_exists('origin_register_navigation')) {
@@ -51,6 +97,7 @@ $originSettingsDefaults = array(
     'origin_theme_analytics_gacode' =>        '',
     'origin_theme_injection_header' =>        '',
     'origin_theme_injection_bodyclose' =>     '',
+    'origin_theme_compile_scss' =>            true,
 
     'origin_theme_font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
     'origin_theme_font_size_base' =>          '16px',
