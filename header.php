@@ -16,5 +16,4 @@
         echo origin_get_setting('origin_theme_injection_header');
     ?>
 </head>
-
 <body <?php body_class(); ?>>

@@ -1,18 +1,21 @@
 <?php
+/**
+ * Template Name: Clients
+ */
 
 get_header();
 get_template_part('partials/navigation-primary');
 
 ?>
 <div class="container">
-<?php
+    <?php
 
-while (have_posts()) {
-    the_post();
-    the_content();
-}
+    while (have_posts()) {
+        the_post();
+        the_content();
+    }
 
-?>
+    ?>
 </div>
 <?php
 
