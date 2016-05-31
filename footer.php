@@ -4,7 +4,7 @@
     wp_footer();
     echo origin_get_setting('origin_theme_injection_bodyclose');
 
-    $gacode = origin_get_setting('origin_theme_injection_gacode');
+    $gacode = origin_get_setting('origin_theme_analytics_gacode');
     if (!empty($gacode)) {
         ?>
         <script>
