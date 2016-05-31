@@ -40,6 +40,7 @@ function origin_style_loader_filter($src) {
         $compiler->setImportPaths($scss_dirs);
 
         $compiler->registerFunction('dreamerysetting', function($args) {
+            //throw new Exception();
             return Dreamery\WP\Settings::getInstance()->$args[0][2][0];
         });
 
@@ -126,6 +127,10 @@ $originSettingsDefaults = array(
 $originSettings = Settings::getInstance();
 $originSettings->setDefaults($originSettingsDefaults);
 $adminSettings = new Dreamery\WP\Admin\Settings;
+function origin_get_setting($setting) {
+    $settings = Settings::getInstance();
+    return $settings->$setting;
+}
 
 /*
  * Turn various WordPress knobs based on theme settings

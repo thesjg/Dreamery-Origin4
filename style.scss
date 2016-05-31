@@ -1,10 +1,18 @@
 /*
+XXX
+these settings aren't being used anywhere yet...
+
+'origin_theme_layout' =>                  'boxed',                    // [boxed, fluid]
+'origin_theme_color_header_background' => '#fff',
+'origin_theme_color_footer_background' => '#fff',
+'origin_theme_color_brand_inverse' => '#373a3c',
+*/
+
 $brand-primary:             dreamerysetting('origin_theme_color_brand_primary');
 $brand-success:             dreamerysetting('origin_theme_color_brand_success');
 $brand-info:                dreamerysetting('origin_theme_color_brand_info');
 $brand-warning:             dreamerysetting('origin_theme_color_brand_warning');
 $brand-danger:              dreamerysetting('origin_theme_color_brand_danger');
-*/
 $body-bg:                   dreamerysetting('origin_theme_color_body_background');
 $font-family-base:          dreamerysetting('origin_theme_font_family_base');
 $font-size-base:            dreamerysetting('origin_theme_font_size_base');
@@ -14,5 +22,16 @@ $font-size-h3:              dreamerysetting('origin_theme_font_size_h3');
 $font-size-h4:              dreamerysetting('origin_theme_font_size_h4');
 $font-size-h5:              dreamerysetting('origin_theme_font_size_h5');
 $font-size-h6:              dreamerysetting('origin_theme_font_size_h6');
+$line-height:               dreamerysetting('origin_theme_line_height_base');
+$headings-line-height:      dreamerysetting('origin_theme_line_height_heading');
+$headings-color:            dreamerysetting('origin_theme_color_heading');
+$gray-dark:                 dreamerysetting('origin_theme_color_text');
+$gray:                      lighten($gray-dark, 12.5%);
+$gray-light:                lighten($gray-dark, 30%);
+$gray-lighter:              lighten($gray-dark, 70.25%);
+$gray-lightest:             lighten($gray-dark, 74.5%);
+
 
 @import 'bootstrap';
+
+
