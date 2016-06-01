@@ -6,10 +6,37 @@ if (!defined('WPINC'))
 use Dreamery\WP\Settings;
 // use ...
 
-if (1) {
-    require get_template_directory() . '/vendor/autoload.php';
-    require get_template_directory() . '/vendor/dreamery/autoload.php';
+require get_template_directory() . '/vendor/autoload.php';
+require get_template_directory() . '/vendor/dreamery/autoload.php';
+
+
+function origin_theme_features()  {
+
+    $custom_header_args = array(
+        'default-image'          => get_template_directory_uri() . '/assets/img/origin4-logo.png',
+        'width'                  => 300,
+        'height'                 => 200,
+        'flex-width'             => true,
+        'flex-height'            => false,
+        'uploads'                => true,
+        'random-default'         => false,
+        'header-text'            => false,
+        'default-text-color'     => '',
+        'wp-head-callback'       => '',
+        'admin-head-callback'    => '',
+        'admin-preview-callback' => '',
+    );
+    add_theme_support('custom-header', $custom_header_args);
+
+    /*
+     * Add support for HTML5 Semantic Markup
+     *
+     * XXX
+     * Do we need extra CSS for this? <figure> ? <figcaption> ?
+     */
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 }
+add_action('after_setup_theme', 'origin_theme_features');
 
 //require(get_template_directory() . '/vendor/leafo/scssphp/scss.inc.php');
 function origin_style_loader_filter($src) {
