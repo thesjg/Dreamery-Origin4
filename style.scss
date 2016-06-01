@@ -45,5 +45,26 @@ header {
   }
 }
 
+
+/*
+ * Faux-grid, for galleries (possibly others)
+ */
+.origin-col-one-fifth {
+  float: left;
+  width: 1/5 * 100%;
+}
+.origin-col-one-seventh {
+  float: left;
+  width: 1/7 * 100%;
+}
+.origin-col-one-eigth {
+  float: left;
+  width: 1/8 * 100%;
+}
+.origin-col-one-ninth {
+  float: left;
+  width: 1/9 * 100%;
+}
+
 footer {
 }
