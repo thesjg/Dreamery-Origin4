@@ -205,7 +205,7 @@ function dreamery_post_gallery($string, $attr){
 
     foreach ($attachments as $id => $attachment) {
         $attr = array();
-        $attr['class'] = 'figure-img img-fluid attachment-' . $atts['size'] . ' size-' . $atts['size'];
+        $attr['class'] = 'img-fluid attachment-' . $atts['size'] . ' size-' . $atts['size'];
         if (!empty($atts['link']) && 'file' === $atts['link']) {
             $image_output = wp_get_attachment_link($id, $atts['size'], false, false, false, $attr);
         } elseif (!empty($atts['link']) && 'none' === $atts['link']) {
@@ -221,12 +221,12 @@ function dreamery_post_gallery($string, $attr){
         }
         $output .= '<' . $itemtag . ' class="figure gallery-item ' . $column_class . '">';
         $output .= "
-			<{$icontag} class='gallery-icon {$orientation}'>
+			<{$icontag} class='figure-img gallery-icon {$orientation}'>
 				$image_output
 			</{$icontag}>";
         if ($captiontag && trim($attachment->post_excerpt)) {
             $output .= "
-				<{$captiontag} class='figure-caption wp-caption-text gallery-caption' id='$selector-$id'>
+				<{$captiontag} class='figure-caption wp-caption-text gallery-caption'>
 				" . wptexturize($attachment->post_excerpt) . "
 				</{$captiontag}>";
         }
