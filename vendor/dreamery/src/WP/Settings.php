@@ -13,6 +13,7 @@ class Settings {
     private $settings = array();
     private $defaults = array();
     private $shortcode_tag = '';
+    private $prefix = 'origin_';
 
     final private function __construct() {}
     final private function __clone() {}
@@ -40,21 +41,23 @@ class Settings {
      * of the theme.
      */
     public function __set($name, $value) {
-        if (array_key_exists($name, $this->defaults)) {
-            if ($this->defaults[$name] != $value) {
-                $this->settings[$name] = $value;
-            } else if (array_key_exists($name, $this->settings))
-                unset($this->settings[$name]);
+        $key = $this->prefix . $name;
+        if (array_key_exists($key, $this->defaults)) {
+            if ($this->defaults[$key] != $value) {
+                $this->settings[$key] = $value;
+            } else if (array_key_exists($key, $this->settings))
+                unset($this->settings[$key]);
         } else {
-            $this->settings[$name] = $value;
+            $this->settings[$key] = $value;
         }
     }
 
     public function __get($name) {
-        if (array_key_exists($name, $this->settings)) {
-            return $this->settings[$name];
-        } else if (array_key_exists($name, $this->defaults)) {
-            return $this->defaults[$name];
+        $key = $this->prefix . $name;
+        if (array_key_exists($key, $this->settings)) {
+            return $this->settings[$key];
+        } else if (array_key_exists($key, $this->defaults)) {
+            return $this->defaults[$key];
         }
 
         /*
@@ -65,13 +68,26 @@ class Settings {
         return null;
     }
 
-    public function setDefaults(array $defaults) {
-        $this->defaults = $defaults;
+    public function setDefaults(array $defaults, $override = false) {
+        if ($override === false) {
+            foreach ($defaults as $default_key => $default_value) {
+                $default_key = $this->prefix . $default_key;
+                if (!isset($this->defaults[$default_key])) {
+                    $this->defaults[$default_key] = $default_value;
+                }
+            }
+        } else {
+            foreach ($defaults as $default_key => $default_value) {
+                $default_key = $this->prefix . $default_key;
+                $this->defaults[$default_key] = $default_value;
+            }
+        }
     }
 
     public function getDefault($name) {
-        if (array_key_exists($name, $this->defaults))
-            return $this->defaults[$name];
+        $key = $this->prefix . $name;
+        if (array_key_exists($key, $this->defaults))
+            return $this->defaults[$key];
 
         return false;
     }

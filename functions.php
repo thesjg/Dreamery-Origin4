@@ -70,6 +70,12 @@ function origin_style_loader_filter($src) {
             //throw new Exception();
             return Dreamery\WP\Settings::getInstance()->$args[0][2][0];
         });
+        $compiler->registerFunction('get_template_directory_uri', function($args) {
+            return get_template_directory_uri();
+        });
+        $compiler->registerFunction('get_stylesheet_uri', function($args) {
+            return get_stylesheet_uri();
+        });
 
         $source = file_get_contents($path);
         $scss = $compiler->compile($source);
@@ -282,45 +288,58 @@ if (!function_exists('origin_register_navigation')) {
  * Setup settings
  */
 $originSettingsDefaults = array(
-    'origin_theme_layout' =>                  'boxed',                    // [boxed, fluid]
-    'origin_theme_excerpt_length' =>          200,
-    'origin_theme_title_separator' =>         '|',
-    'origin_theme_analytics_gacode' =>        '',
-    'origin_theme_injection_header' =>        '',
-    'origin_theme_injection_bodyclose' =>     '',
-    'origin_theme_compile_scss' =>            true,
+    'theme_layout' =>                  'boxed',                    // [boxed, fluid]
+    'theme_excerpt_length' =>          200,
+    'theme_title_separator' =>         '|',
+    'theme_analytics_gacode' =>        '',
+    'theme_injection_header' =>        '',
+    'theme_injection_bodyclose' =>     '',
+    'theme_compile_scss' =>            true,
 
-    'origin_theme_font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
-    'origin_theme_font_size_base' =>          '16px',
-    'origin_theme_font_size_h1' =>            '2.5rem',
-    'origin_theme_font_size_h2' =>            '2rem',
-    'origin_theme_font_size_h3' =>            '1.75rem',
-    'origin_theme_font_size_h4' =>            '1.5rem',
-    'origin_theme_font_size_h5' =>            '1.25rem',
-    'origin_theme_font_size_h6' =>            '1rem',
-    'origin_theme_line_height_base' =>        '1.5',
-    'origin_theme_line_height_heading' =>     '1.1',
+    'theme_font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+    'theme_font_size_base' =>          '16px',
+    'theme_font_size_h1' =>            '2.5rem',
+    'theme_font_size_h2' =>            '2rem',
+    'theme_font_size_h3' =>            '1.75rem',
+    'theme_font_size_h4' =>            '1.5rem',
+    'theme_font_size_h5' =>            '1.25rem',
+    'theme_font_size_h6' =>            '1rem',
+    'theme_line_height_base' =>        '1.5',
+    'theme_line_height_heading' =>     '1.1',
 
-    'origin_theme_color_header_background' => '#fff',
-    'origin_theme_color_body_background' => '#fff',
-    'origin_theme_color_footer_background' => '#fff',
-    'origin_theme_color_text' => '#373a3c',
-    'origin_theme_color_heading' => '#373a3c',
-    'origin_theme_color_brand_primary' => '#0275d8',
-    'origin_theme_color_brand_success' => '#5cb85c',
-    'origin_theme_color_brand_info' => '#5bc0de',
-    'origin_theme_color_brand_warning' => '#f0ad4e',
-    'origin_theme_color_brand_danger' => '#d9534f',
-    'origin_theme_color_brand_inverse' => '#373a3c',
+    'theme_color_header_background' => '#fff',
+    'theme_color_body_background' => '#fff',
+    'theme_color_footer_background' => '#fff',
+    'theme_color_text' => '#373a3c',
+    'theme_color_heading' => '#373a3c',
+    'theme_color_brand_primary' => '#0275d8',
+    'theme_color_brand_success' => '#5cb85c',
+    'theme_color_brand_info' => '#5bc0de',
+    'theme_color_brand_warning' => '#f0ad4e',
+    'theme_color_brand_danger' => '#d9534f',
+    'theme_color_brand_inverse' => '#373a3c',
 );
+
+if (get_stylesheet_directory() != get_template_directory()) {
+    $origin_settings_override_filename = get_stylesheet_directory() . '/settings.php';
+    if (file_exists($origin_settings_override_filename)) {
+        require($origin_settings_override_filename);
+    }
+}
+
 // ------------------------
 $originSettings = Settings::getInstance();
-$originSettings->setDefaults($originSettingsDefaults);
-$adminSettings = new Dreamery\WP\Admin\Settings;
+//echo '<pre>';
+//echo var_dump($originSettings);
+//echo '</pre>';
+$originSettings->setDefaults($originSettingsDefaults, false);
 function origin_get_setting($setting) {
     $settings = Settings::getInstance();
     return $settings->$setting;
 }
+
+$adminSettings = new Dreamery\WP\Admin\Settings;
+$adminCustomizations = new Dreamery\WP\Admin\Customizations;
 
 /*
  * Turn various WordPress knobs based on theme settings
