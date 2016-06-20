@@ -27,8 +27,12 @@ class Customizations
 
         $wp_customize->add_section('origin_typography', array(
             'title'         => 'Typography',
-            'description'   => '',
+            'description'   => 'Select the typography scheme to be used throughout your website',
 
+        ));
+        $wp_customize->add_setting('origin_typography_scheme', array(
+                'default' => 'muli-ovo',
+//                'sanitize_callback' => '',
         ));
         $wp_customize->add_control('origin_typography_scheme', array(
             'section'   => 'origin_typography',
@@ -41,9 +45,8 @@ class Customizations
                 'cabin-quicksand'       =>  'Cabin (Sans) / Quicksand (Sans)',
                 'lora-muli'             =>  'Lora (Serif) / Muli (Sans)',
             ),
-            'settings' => array(),
+            'settings' => 'origin_typography_scheme',
         ));
-
 
 
 

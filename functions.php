@@ -70,6 +70,9 @@ function origin_style_loader_filter($src) {
             //throw new Exception();
             return Dreamery\WP\Settings::getInstance()->$args[0][2][0];
         });
+        $compiler->registerFunction('get_theme_mod', function($args) {
+            return get_theme_mod($args[0][2][0]);
+        });
         $compiler->registerFunction('get_template_directory_uri', function($args) {
             return get_template_directory_uri();
         });
@@ -82,7 +85,7 @@ function origin_style_loader_filter($src) {
 
         $fileid = 'dreamery-sass-' . $i;
         file_put_contents($cache_dir . '/' . $fileid . '.css', $scss);
-        wp_enqueue_style($fileid, site_url('/wp-content/cache/' . $fileid . '.css'));
+        wp_enqueue_style($fileid, site_url('/wp-content/cache/' . $fileid . '.css?t=' . time()));
         $i++;
 
         return null;
