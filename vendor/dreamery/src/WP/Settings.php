@@ -29,6 +29,13 @@ class Settings {
                 }
             }
 
+            $mods = get_theme_mods();
+            if ($mods !== false) {
+                foreach ($mods as $mod_key => $mod_val) {
+                    self::$instance->$mod_key = $mod_val;
+                }
+            }
+
             add_shortcode('dreamerysetting', __CLASS__ . '::shortcode');
         }
 
