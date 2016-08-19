@@ -77,6 +77,7 @@ class Customizations
         foreach ($this->customizations['color']['keys'] as $cust_id => $cust) {
             $setting_name = 'origin_theme_settings[' . $cust_id . ']';
             $wp_customize->add_setting($setting_name, array(
+//            $wp_customize->add_setting($cust_id, array(
                 'type' => 'option',
                 'default' => $originSettings->getDefault($cust_id),
             ));
@@ -84,10 +85,12 @@ class Customizations
                 new WP_Customize_Color_Control(
                     $wp_customize,
                     $setting_name,
+//                    $cust_id,
                     array(
                         'section'   => 'colors',
                         'label'     => $cust['name'],
                         'settings'  => $setting_name,
+//                        'settings'  => $cust_id,
                     )
                 )
             );

@@ -60,11 +60,30 @@ class Settings {
     }
 
     public function __get($name) {
+        $ret = null;
+        
         $key = $this->prefix . $name;
         if (array_key_exists($key, $this->settings)) {
-            return $this->settings[$key];
+            $ret = $this->settings[$key];
         } else if (array_key_exists($key, $this->defaults)) {
-            return $this->defaults[$key];
+            $ret = $this->defaults[$key];
+        }
+
+        /*
+         * Are we in the customizer?
+         *
+         * TODO: Selectively re-compile css, different output file for the admin
+         * preview vs the frontend?
+         */
+        if (!empty($_POST['wp_customize']) && $_POST['wp_customize'] == 'on') {
+            /*
+             * Is the setting we are looking for being over-ridden for preview?
+             */
+            $setting_name = $setting_name = 'origin_theme_settings[' . $name . ']';
+            $cust_data = json_decode(stripslashes($_POST['customized']));
+            if (!empty($cust_data->$setting_name)) {
+                $ret = $cust_data->$setting_name;
+            }
         }
 
         /*
@@ -72,7 +91,7 @@ class Settings {
          * Add debug output
          */
 
-        return null;
+        return $ret;
     }
 
     public function setDefaults(array $defaults, $override = false) {
