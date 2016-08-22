@@ -31,6 +31,12 @@ $gray-light:                lighten($gray-dark, 30%);
 $gray-lighter:              lighten($gray-dark, 70.25%);
 $gray-lightest:             lighten($gray-dark, 74.5%);
 
+$enable-flex:               dreamerysetting('theme_setting_enable_flex');
+$enable-rounded:            dreamerysetting('theme_setting_enable_rounded');
+$enable-shadows:            dreamerysetting('theme_setting_enable_shadows');
+$enable-gradients:          dreamerysetting('theme_setting_enable_gradients');
+$enable-transitions:        dreamerysetting('theme_setting_enable_transitions');
+
 $stylesheet_uri:            get_stylesheet_uri();
 $template_uri:              get_template_directory_uri();
 

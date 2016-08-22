@@ -291,36 +291,37 @@ if (!function_exists('origin_register_navigation')) {
  * Setup settings
  */
 $originSettingsDefaults = array(
-    'theme_layout' =>                  'boxed',                    // [boxed, fluid]
-    'theme_excerpt_length' =>          200,
-    'theme_title_separator' =>         '|',
-    'theme_analytics_gacode' =>        '',
-    'theme_injection_header' =>        '',
-    'theme_injection_bodyclose' =>     '',
-    'theme_compile_scss' =>            true,
+    'layout' =>                  'boxed',                    // [boxed, fluid]
+    'excerpt_length' =>          200,
+    'title_separator' =>         '|',
+    'analytics_gacode' =>        '',
+    'injection_header' =>        '',
+    'injection_bodyclose' =>     '',
 
-    'theme_font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
-    'theme_font_size_base' =>          '16px',
-    'theme_font_size_h1' =>            '2.5rem',
-    'theme_font_size_h2' =>            '2rem',
-    'theme_font_size_h3' =>            '1.75rem',
-    'theme_font_size_h4' =>            '1.5rem',
-    'theme_font_size_h5' =>            '1.25rem',
-    'theme_font_size_h6' =>            '1rem',
-    'theme_line_height_base' =>        '1.5',
-    'theme_line_height_heading' =>     '1.1',
+    'compile_scss' =>            true,
 
-    'theme_color_header_background' => '#fff',
-    'theme_color_body_background' => '#fff',
-    'theme_color_footer_background' => '#fff',
-    'theme_color_text' => '#373a3c',
-    'theme_color_heading' => '#373a3c',
-    'theme_color_brand_primary' => '#0275d8',
-    'theme_color_brand_success' => '#5cb85c',
-    'theme_color_brand_info' => '#5bc0de',
-    'theme_color_brand_warning' => '#f0ad4e',
-    'theme_color_brand_danger' => '#d9534f',
-    'theme_color_brand_inverse' => '#373a3c',
+    'font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+    'font_size_base' =>          '16px',
+    'font_size_h1' =>            '2.5rem',
+    'font_size_h2' =>            '2rem',
+    'font_size_h3' =>            '1.75rem',
+    'font_size_h4' =>            '1.5rem',
+    'font_size_h5' =>            '1.25rem',
+    'font_size_h6' =>            '1rem',
+    'line_height_base' =>        '1.5',
+    'line_height_heading' =>     '1.1',
+
+    'color_header_background' => '#fff',
+    'color_body_background' => '#fff',
+    'color_footer_background' => '#fff',
+    'color_text' => '#373a3c',
+    'color_heading' => '#373a3c',
+    'color_brand_primary' => '#0275d8',
+    'color_brand_success' => '#5cb85c',
+    'color_brand_info' => '#5bc0de',
+    'color_brand_warning' => '#f0ad4e',
+    'color_brand_danger' => '#d9534f',
+    'color_brand_inverse' => '#373a3c',
 );
 
 if (get_stylesheet_directory() != get_template_directory()) {
@@ -349,13 +350,13 @@ $adminCustomizations = new Dreamery\WP\Admin\Customizations;
  */
 function origin_filter_excerpt_length() {
     $settings = Settings::getInstance();
-    return $settings->origin_theme_excerpt_length;
+    return $settings->theme_excerpt_length;
 }
 add_filter('excerpt_length', 'origin_filter_excerpt_length');
 
 function origin_filter_document_title_separator($sep) {
     $settings = Settings::getInstance();
-    $o_sep = $settings->origin_theme_title_separator;
+    $o_sep = $settings->theme_title_separator;
 
     if (is_singular('post')) {
         $sep = $o_sep;
