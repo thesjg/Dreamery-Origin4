@@ -3,8 +3,7 @@
 namespace Dreamery\WP;
 
 /*
- * Namespace the settings under a dreamery* prefix, so they will be applicable to any
- * Dreamery theme, all of which may share the same settings infrastructure.
+ *
  */
 class Settings
 {
@@ -21,46 +20,170 @@ class Settings
             'name' => 'General Settings',
             'desc' => '',
             'keys' => array(
-                'theme_layout' => array('name' => 'Layout', 'type' => 'select', 'options' => array('boxed', 'fluid')),
-                'theme_excerpt_length' => array('name' => 'Excerpt Length', 'type' => 'number'),
-                'theme_title_separator' => array('name' => 'Title Separator', 'type' => 'text'),
-                'theme_analytics_gacode' => array('name' => 'Google Analytics UA Code', 'type' => 'text'),
-                'theme_injection_header' => array('name' => 'Header Extras (JS/CSS)', 'type' => 'textarea'),
-                'theme_injection_bodyclose' => array('name' => 'Before Body Close Extras', 'type' => 'textarea'),
-//                'origin_theme_compile_scss' => array('name' => 'Compile SCSS', 'type' => 'boolean'),
+                'theme_layout' => array(
+                    'name' => 'Layout',
+                    'desc' => '',
+                    'type' => 'select',
+                    'options' => array('boxed', 'fluid')),
+                'theme_excerpt_length' => array(
+                    'name' => 'Excerpt Length',
+                    'desc' => '',
+                    'type' => 'number'),
+                'theme_title_separator' => array(
+                    'name' => 'Title Separator',
+                    'desc' => '',
+                    'type' => 'text'),
+                'theme_analytics_gacode' => array(
+                    'name' => 'Google Analytics UA Code',
+                    'desc' => '',
+                    'type' => 'text'),
+                'theme_injection_header' => array(
+                    'name' => 'Header Extras (JS/CSS)',
+                    'desc' => '',
+                    'type' => 'textarea'),
+                'theme_injection_bodyclose' => array(
+                    'name' => 'Before Body Close Extras',
+                    'desc' => '',
+                    'type' => 'textarea'),
+//                'origin_theme_compile_scss' => array(
+//'name' => 'Compile SCSS',
+//'type' => 'boolean'),
             )
         ),
         'font' => array(
-            'name' => 'Font Settings',
+            'name' => 'Typography Settings',
             'desc' => '',
             'keys' => array(
-                'theme_font_family_base' => array('name' => 'Base Font Family', 'type' => 'text'),
-                'theme_font_size_base' => array('name' => 'Base Font Size', 'type' => 'number-units'),
-                'theme_font_size_h1' => array('name' => 'H1 Font Size', 'type' => 'number-units'),
-                'theme_font_size_h2' => array('name' => 'H2 Font Size', 'type' => 'number-units'),
-                'theme_font_size_h3' => array('name' => 'H3 Font Size', 'type' => 'number-units'),
-                'theme_font_size_h4' => array('name' => 'H4 Font Size', 'type' => 'number-units'),
-                'theme_font_size_h5' => array('name' => 'H5 Font Size', 'type' => 'number-units'),
-                'theme_font_size_h6' => array('name' => 'H6 Font Size', 'type' => 'number-units'),
-                'theme_line_height_base' => array('name' => 'Base Line Height', 'type' => 'number-units'),
-                'theme_line_height_heading' => array('name' => 'H1-H6 Line Height', 'type' => 'number-units'),
+                'theme_font_scheme_enable' => array(
+                    'name' => 'Enable Theme Fonts',
+                    'desc' => '',
+                    'type' => 'boolean',
+                    'default' => true),
+                'theme_font_scheme' => array(
+                    'name' => 'Font Scheme',
+                    'desc' => '',
+                    'type' => 'select',
+                    'default' => 'muli-ovo',
+                    'options' => array(
+                        'muli-ovo'              =>  'Muli (Sans) / Ovo (Serif)',
+                        'opensans-montserrat'   =>  'Open Sans (Sans) / Montserrat (Sans)',
+                        'lato-fjallaone'        =>  'Lato (Sans) / Fjalla One (Sans)',
+                        'cabin-quicksand'       =>  'Cabin (Sans) / Quicksand (Sans)',
+                        'lora-muli'             =>  'Lora (Serif) / Muli (Sans)',
+                    )
+                ),
+                'theme_font_size_base' => array(
+                    'name' => 'Base Font Size',
+                    'desc' => 'Used to responsively scale all other typography',
+                    'type' => 'number-units',
+                    'units' => 'px',
+                    'default' => '16px',
+                    'min' => 10,
+                    'max' => 28,
+                    'step' => 1),
+                'theme_font_size_h1' => array(
+                    'name' => 'H1 Font Size',
+                    'desc' => '',
+                    'type' => 'number-units',
+                    'units' => 'rem',
+                    'default' => '2.5rem',
+                    'min' => .5,
+                    'max' => 3.5,
+                    'step' => .25),
+                'theme_font_size_h2' => array(
+                    'name' => 'H2 Font Size',
+                    'desc' => '',
+                    'type' => 'number-units',
+                    'units' => 'rem',
+                    'default' => '2rem',
+                    'min' => .5,
+                    'max' => 3.5,
+                    'step' => .25),
+                'theme_font_size_h3' => array(
+                    'name' => 'H3 Font Size',
+                    'desc' => '',
+                    'type' => 'number-units',
+                    'units' => 'rem',
+                    'default' => '1.75rem',
+                    'min' => .5,
+                    'max' => 3.5,
+                    'step' => .25),
+                'theme_font_size_h4' => array(
+                    'name' => 'H4 Font Size',
+                    'desc' => '',
+                    'type' => 'number-units',
+                    'units' => 'rem',
+                    'default' => '1.5rem',
+                    'min' => .5,
+                    'max' => 3.5,
+                    'step' => .25),
+                'theme_font_size_h5' => array(
+                    'name' => 'H5 Font Size',
+                    'desc' => '',
+                    'type' => 'number-units',
+                    'units' => 'rem',
+                    'default' => '1.25rem',
+                    'min' => .5,
+                    'max' => 3.5,
+                    'step' => .25),
+                'theme_font_size_h6' => array(
+                    'name' => 'H6 Font Size',
+                    'desc' => '',
+                    'type' => 'number-units',
+                    'units' => 'rem',
+                    'default' => '1rem',
+                    'min' => .5,
+                    'max' => 3.5,
+                    'step' => .25),
+                'theme_line_height_base' => array(
+                    'name' => 'Base Line Height',
+                    'desc' => '',
+                    'type' => 'number',
+                    'default' => ''),
+                'theme_line_height_heading' => array(
+                    'name' => 'H1-H6 Line Height',
+                    'desc' => '',
+                    'type' => 'number',
+                    'default' => '1.5'),
             )
         ),
         'color' => array(
             'name' => 'Color Settings',
             'desc' => '',
             'keys' => array(
-                'theme_color_header_background' => array('name' => 'Header Background Color', 'type' => 'color'),
-                'theme_color_body_background' => array('name' => 'Body Background Color', 'type' => 'color'),
-                'theme_color_footer_background' => array('name' => 'Footer Background Color', 'type' => 'color'),
-                'theme_color_text' => array('name' => 'Text Color', 'type' => 'color'),
-                'theme_color_heading' => array('name' => 'H1-H6 Text Color', 'type' => 'color'),
-                'theme_color_brand_primary' => array('name' => 'Brand Primary Color', 'type' => 'color'),
-                'theme_color_brand_success' => array('name' => 'Brand Success Color', 'type' => 'color'),
-                'theme_color_brand_info' => array('name' => 'Brand Info Color', 'type' => 'color'),
-                'theme_color_brand_warning' => array('name' => 'Brand Warning Color', 'type' => 'color'),
-                'theme_color_brand_danger' => array('name' => 'Brand Danger Color', 'type' => 'color'),
-                'theme_color_brand_inverse' => array('name' => 'Brand Inverse Color', 'type' => 'color'),
+                'theme_color_header_background' => array(
+                    'name' => 'Header Background Color',
+                    'type' => 'color'),
+                'theme_color_body_background' => array(
+                    'name' => 'Body Background Color',
+                    'type' => 'color'),
+                'theme_color_footer_background' => array(
+                    'name' => 'Footer Background Color',
+                    'type' => 'color'),
+                'theme_color_text' => array(
+                    'name' => 'Text Color',
+                    'type' => 'color'),
+                'theme_color_heading' => array(
+                    'name' => 'H1-H6 Text Color',
+                    'type' => 'color'),
+                'theme_color_brand_primary' => array(
+                    'name' => 'Brand Primary Color',
+                    'type' => 'color'),
+                'theme_color_brand_success' => array(
+                    'name' => 'Brand Success Color',
+                    'type' => 'color'),
+                'theme_color_brand_info' => array(
+                    'name' => 'Brand Info Color',
+                    'type' => 'color'),
+                'theme_color_brand_warning' => array(
+                    'name' => 'Brand Warning Color',
+                    'type' => 'color'),
+                'theme_color_brand_danger' => array(
+                    'name' => 'Brand Danger Color',
+                    'type' => 'color'),
+                'theme_color_brand_inverse' => array(
+                    'name' => 'Brand Inverse Color',
+                    'type' => 'color'),
             )
         ),
         'style' => array(
@@ -109,6 +232,20 @@ class Settings
         if (self::$instance === null) {
             self::$instance = new self();
 
+            /*
+             * Setup built-in defaults
+             */
+            foreach (self::$instance->base as $setting_type => $setting_value) {
+                foreach ($setting_value['keys'] as $skey => $sval) {
+                    if (isset($sval['default'])) {
+                        self::$instance->setDefault($skey, $sval['default']);
+                    }
+                }
+            }
+
+            /*
+             * Bring in saved settings from WordPress database
+             */
             $settings = get_option('origin_theme_settings');
             if ($settings !== false && is_array($settings)) {
                 foreach ($settings as $skey => $sval) {
@@ -116,12 +253,22 @@ class Settings
                 }
             }
 
+            /*
+             * Bring in saved settings from Theme Customizer
+             *
+             * ... just kidding! By passing type => option to
+             * wp_customize->add_setting, the customizer settings are
+             * turned into options retrievable via get_option() instead of
+             * get_theme_mods()
+             */
+            /*
             $mods = get_theme_mods();
             if ($mods !== false) {
                 foreach ($mods as $mod_key => $mod_val) {
                     self::$instance->$mod_key = $mod_val;
                 }
             }
+            */
 
             add_shortcode('dreamerysetting', __CLASS__ . '::shortcode');
         }
@@ -136,6 +283,7 @@ class Settings
      */
     public function __set($name, $value)
     {
+        $value = $this->coerceValue($value);
         $key = $this->prefix . $name;
         if (array_key_exists($key, $this->defaults)) {
             if ($this->defaults[$key] != $value) {
@@ -192,18 +340,21 @@ class Settings
 
     public function setDefaults(array $defaults, $override = false)
     {
+        foreach ($defaults as $default_key => $default_value) {
+            $this->setDefault($default_key, $default_value, $override);
+        }
+    }
+
+    public function setDefault($name, $value, $override = false)
+    {
+        $value = $this->coerceValue($value);
+
+        $default_key = $this->prefix . $name;
         if ($override === false) {
-            foreach ($defaults as $default_key => $default_value) {
-                $default_key = $this->prefix . $default_key;
-                if (!isset($this->defaults[$default_key])) {
-                    $this->defaults[$default_key] = $default_value;
-                }
-            }
+            if (!isset($this->defaults[$default_key]))
+                $this->defaults[$default_key] = $value;
         } else {
-            foreach ($defaults as $default_key => $default_value) {
-                $default_key = $this->prefix . $default_key;
-                $this->defaults[$default_key] = $default_value;
-            }
+            $this->defaults[$default_key] = $value;
         }
     }
 
@@ -229,6 +380,17 @@ class Settings
             'name' => '',
         ), $atts);
 
-        return self::getInstance()->$a['name'];
+        $ret = self::getInstance()->$a['name'];
+
+        return $ret;
+    }
+
+    private function coerceValue($value) {
+        if ($value == 'true')
+            $value = true;
+        else if ($value == 'false')
+            $value = false;
+
+        return $value;
     }
 }
