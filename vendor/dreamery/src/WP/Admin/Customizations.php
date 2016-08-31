@@ -119,6 +119,37 @@ class Customizations
                         )
                     );
                     break;
+                case 'number':
+                    /* Defaults */
+                    $min = 0;
+                    $max = 100;
+                    $step = 1;
+
+                    if (!empty($cust['min']))
+                        $min = $cust['min'];
+                    if (!empty($cust['max']))
+                        $max = $cust['max'];
+                    if (!empty($cust['step']))
+                        $step = $cust['step'];
+
+                    $wp_customize->add_control(
+                        new \Dreamery\WP\CustomizeNumberControl(
+                            $wp_customize,
+                            $setting_name,
+                            array(
+                                'section'   => 'origin_typography',
+                                'label'     => $cust['name'],
+                                'settings'  => $setting_name,
+                            ),
+                            array(
+                                'min' => $min,
+                                'max' => $max,
+                                'step' => $step,
+                                'default' => $originSettings->getDefault($cust_id),
+                            )
+                        )
+                    );
+                    break;
                 case 'select':
                     $wp_customize->add_control(
                         new \WP_Customize_Control(

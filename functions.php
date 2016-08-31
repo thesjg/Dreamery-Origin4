@@ -300,7 +300,7 @@ $originSettingsDefaults = array(
 
     'compile_scss' =>            true,
 
-    'font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+//    'font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
     'font_size_base' =>          '16px',
     'font_size_h1' =>            '2.5rem',
     'font_size_h2' =>            '2rem',
@@ -308,9 +308,10 @@ $originSettingsDefaults = array(
     'font_size_h4' =>            '1.5rem',
     'font_size_h5' =>            '1.25rem',
     'font_size_h6' =>            '1rem',
+/*
     'line_height_base' =>        '1.5',
     'line_height_heading' =>     '1.1',
-
+*/
     'color_header_background' => '#fff',
     'color_body_background' => '#fff',
     'color_footer_background' => '#fff',
@@ -333,9 +334,6 @@ if (get_stylesheet_directory() != get_template_directory()) {
 
 // ------------------------
 $originSettings = Settings::getInstance();
-//echo '<pre>';
-//echo var_dump($originSettings);
-//echo '</pre>';
 $originSettings->setDefaults($originSettingsDefaults, false);
 function origin_get_setting($setting) {
     $settings = Settings::getInstance();

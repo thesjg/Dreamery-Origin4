@@ -14,6 +14,7 @@ $brand-info:                dreamerysetting('theme_color_brand_info');
 $brand-warning:             dreamerysetting('theme_color_brand_warning');
 $brand-danger:              dreamerysetting('theme_color_brand_danger');
 $body-bg:                   dreamerysetting('theme_color_body_background');
+$font-size-root:            dreamerysetting('theme_font_size_root');
 $font-size-base:            dreamerysetting('theme_font_size_base');
 $font-size-h1:              dreamerysetting('theme_font_size_h1');
 $font-size-h2:              dreamerysetting('theme_font_size_h2');
@@ -39,6 +40,9 @@ $enable-transitions:        dreamerysetting('theme_style_enable_transitions');
 $stylesheet_uri:            get_stylesheet_uri();
 $template_uri:              get_template_directory_uri();
 
+
+//$font-family-base:         'muli';
+//$headings-font-family:     'ovo';
 
 
 /* $theme_typography_scheme:   dreamerysetting('theme_typography_scheme'); */
