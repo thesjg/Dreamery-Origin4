@@ -2,7 +2,6 @@
 
 namespace Dreamery\WP;
 
-/* PHP */
 use Exception;
 
 /* WP Global */
