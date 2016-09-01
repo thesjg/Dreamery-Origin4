@@ -12,7 +12,7 @@
     <title><?php wp_title(); ?></title>
     <?php
         wp_head();
-        echo origin_get_setting('origin_theme_injection_header');
+        echo origin_get_setting('theme_injection_header');
     ?>
 </head>
 <body <?php body_class(); ?>>

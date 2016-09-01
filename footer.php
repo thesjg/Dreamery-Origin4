@@ -1,9 +1,9 @@
 <?php
     wp_footer();
-    echo origin_get_setting('origin_theme_injection_bodyclose');
+    echo origin_get_setting('theme_injection_bodyclose');
 
     if (!current_user_can('manage_options')) {
-        $gacode = origin_get_setting('origin_theme_analytics_gacode');
+        $gacode = origin_get_setting('theme_analytics_gacode');
         if (!empty($gacode)) {
             ?>
             <script>
