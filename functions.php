@@ -308,13 +308,6 @@ if (!function_exists('origin_register_navigation')) {
  * Setup settings
  */
 $originSettingsDefaults = array(
-    'layout' =>                  'boxed',                    // [boxed, fluid]
-    'excerpt_length' =>          200,
-    'title_separator' =>         '|',
-    'analytics_gacode' =>        '',
-    'injection_header' =>        '',
-    'injection_bodyclose' =>     '',
-
     'compile_scss' =>            true,
 
 //    'font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',

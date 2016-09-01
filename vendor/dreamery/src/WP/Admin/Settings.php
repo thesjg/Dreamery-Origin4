@@ -1,22 +1,32 @@
 <?php
 
-
 namespace Dreamery\WP\Admin;
 
 
 class Settings
 {
+    public static $page_name = 'origin-theme-settings';
+
     public function __construct()
     {
+
         if (is_admin()) {
-            add_action('admin_menu', array($this, 'registerMenus'));
+            add_action('admin_menu', array($this, 'registerMenus'), 1);
             add_action('admin_init', array($this, 'registerSettings'));
+            add_action('current_screen', array($this, 'enqueueAssets'));
+        }
+    }
+
+    public static function enqueueAssets() {
+        $screen = get_current_screen();
+        if ($screen->id == 'appearance_page_' . self::$page_name) {
+            wp_enqueue_style('strider', get_template_directory_uri() . '/assets/admin/css/theme_settings.css');
         }
     }
 
     public static function registerMenus() {
 
-        add_theme_page('Origin4 Options', 'Origin4 Options', 'edit_theme_options', 'origin-theme-settings', __CLASS__ . '::renderOptions');
+        add_theme_page('Origin4 Options', 'Origin4 Options', 'edit_theme_options', self::$page_name, __CLASS__ . '::renderOptions');
     }
 
     public static function registerSettings() {
@@ -43,6 +53,23 @@ class Settings
             }
         }
         */
+
+        $originSettings = \Dreamery\WP\Settings::getInstance();
+        $current_settings = $originSettings->getAvailableSettings();
+
+        $generalSettings = $current_settings['general'];
+
+        $section_name = 'origin_settings_theme_general';
+        add_settings_section($section_name, 'General Settings', __CLASS__ . '::renderSection', 'origin');
+
+        foreach ($generalSettings['keys'] as $cust_id => $cust) {
+//            $setting_name = 'origin_theme_settings[' . $cust_id . ']';
+
+            add_settings_field($cust_id, $cust['name'], function($args) use ($cust, $cust_id){
+                self::renderField($cust, $cust_id, $args);
+            }, 'origin', $section_name);
+
+        }
     }
 
     public static function renderOptions() {
@@ -67,9 +94,10 @@ class Settings
     public static function renderField($data, $field, $args) {
         $settings = \Dreamery\WP\Settings::getInstance();
         $options = array(
-            'value'     =>      $settings->$field,
-            'default'   =>      $settings->getDefault($field),
-            'name'      =>      'origin_theme_settings[' . $field . ']',
+            'value'         =>      $settings->$field,
+            'placeholder'   =>      $settings->getDefault($field),
+            'name'          =>      'origin_theme_settings[' . $field . ']',
+            'description'   =>      $data['desc'],
         );
         if ($data['type'] == 'select') {
             $options['options'] = array();
@@ -82,8 +110,8 @@ class Settings
                 $options['options'][] = $t_option;
             }
         } else {
-            if ($options['value'] == $options['default']) {
-                $options['placeholder'] = $options['value'];
+//            $options['placeholder'] = $options['default'];
+            if ($options['value'] == $options['placeholder']) {
                 unset($options['value']);
             }
         }

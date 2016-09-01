@@ -23,7 +23,7 @@ class Customizations
     public function enqueueScripts() {
         wp_enqueue_script(
             'origin-theme-customize',
-            get_template_directory_uri() . '/assets/js/admin_customizer.js',
+            get_template_directory_uri() . '/assets/admin/js/admin_customizer.js',
             array('jquery', 'customize-preview'),
             '1.9.9.6',
             true
