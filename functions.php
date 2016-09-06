@@ -10,8 +10,7 @@ require get_template_directory() . '/vendor/autoload.php';
 require get_template_directory() . '/vendor/dreamery/autoload.php';
 
 if (!function_exists('origin_theme_support_custom_header')) {
-    function origin_theme_support_custom_header()
-    {
+    function origin_theme_support_custom_header() {
         $custom_header_args = array(
             'default-image' => get_template_directory_uri() . '/assets/img/origin4-logo.png',
             'width' => 300,
@@ -33,8 +32,7 @@ if (!function_exists('origin_theme_support_custom_header')) {
 }
 
 if (!function_exists('origin_theme_support_html5')) {
-    function origin_theme_support_html5()
-    {
+    function origin_theme_support_html5() {
         /*
          * Add support for HTML5 Semantic Markup
          *
@@ -45,6 +43,13 @@ if (!function_exists('origin_theme_support_html5')) {
     }
 
     add_action('after_setup_theme', 'origin_theme_support_html5');
+}
+
+if (!function_exists('origin_theme_support_title_tag')) {
+    function origin_theme_support_title_tag() {
+        add_theme_support('title-tag');
+    }
+    add_action('after_setup_theme', 'origin_theme_support_title_tag');
 }
 
 /*

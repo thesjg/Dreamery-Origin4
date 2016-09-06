@@ -8,8 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
-    <title><?php wp_title(); ?></title>
     <?php
         wp_head();
         echo origin_get_setting('theme_injection_header');
