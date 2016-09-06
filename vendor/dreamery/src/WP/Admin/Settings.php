@@ -63,6 +63,9 @@ class Settings
         add_settings_section($section_name, 'General Settings', __CLASS__ . '::renderSection', 'origin');
 
         foreach ($generalSettings['keys'] as $cust_id => $cust) {
+            if ($cust['show'] === false)
+                continue;
+
 //            $setting_name = 'origin_theme_settings[' . $cust_id . ']';
 
             add_settings_field($cust_id, $cust['name'], function($args) use ($cust, $cust_id){

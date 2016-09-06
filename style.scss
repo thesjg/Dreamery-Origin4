@@ -318,6 +318,17 @@ header {
   }
 }
 
+/*
+ *
+ */
+@if dreamerysetting('theme_background_image') != '' {
+  body {
+    background-image: url(dreamerysetting('theme_background_image'));
+    background-repeat: dreamerysetting('theme_background_repeat');
+    background-position: top dreamerysetting('theme_background_position');
+    background-attachment: dreamerysetting('theme_background_attachment');
+  }
+}
 
 /*
  * Faux-grid, for galleries (possibly others)

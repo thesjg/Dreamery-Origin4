@@ -11,7 +11,7 @@ require get_template_directory() . '/vendor/dreamery/autoload.php';
 
 if (!function_exists('origin_theme_support_custom_header')) {
     function origin_theme_support_custom_header() {
-        $custom_header_args = array(
+        $args = array(
             'default-image' => get_template_directory_uri() . '/assets/img/origin4-logo.png',
             'width' => 300,
             'height' => 200,
@@ -25,9 +25,8 @@ if (!function_exists('origin_theme_support_custom_header')) {
             'admin-head-callback' => '',
             'admin-preview-callback' => '',
         );
-        add_theme_support('custom-header', $custom_header_args);
+        add_theme_support('custom-header', $args);
     }
-
     add_action('after_setup_theme', 'origin_theme_support_custom_header');
 }
 
@@ -41,7 +40,6 @@ if (!function_exists('origin_theme_support_html5')) {
          */
         add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
     }
-
     add_action('after_setup_theme', 'origin_theme_support_html5');
 }
 
@@ -50,6 +48,48 @@ if (!function_exists('origin_theme_support_title_tag')) {
         add_theme_support('title-tag');
     }
     add_action('after_setup_theme', 'origin_theme_support_title_tag');
+}
+
+if (!function_exists('origin_theme_support_custom_background')) {
+    function origin_theme_support_custom_background()
+    {
+        $settings = Settings::getInstance();
+        $args = array(
+            'default-color' => $settings->getDefault('color_body_background'),
+            'wp-head-callback' => function () {
+            },
+            'admin-head-callback' => function () {
+            },
+            'admin-preview-callback' => function () {
+            },
+        );
+        add_theme_support('custom-background', $args);
+
+        /*
+         * Push custom theme background into Settings, if applicable
+         *
+         * XXX: Research the order in which this is done, after_setup_theme
+         * probably isn't right (doesn't work in the Customizer)
+         */
+        $background = set_url_scheme(get_background_image());
+        if (is_string($background)) {
+            $settings->theme_background_image = $background;
+        }
+        $repeat = get_theme_mod('background_repeat');
+        if (is_string($repeat)) {
+            $settings->theme_background_repeat = $repeat;
+        }
+        $position = get_theme_mod('background_position');
+        if (is_string($position)) {
+            $settings->theme_background_position = $position;
+        }
+        $attachment = get_theme_mod('background_attachment');
+        if (is_string($attachment)) {
+            $settings->theme_background_attachment = $attachment;
+        }
+    }
+
+    add_action('after_setup_theme', 'origin_theme_support_custom_background');
 }
 
 /*

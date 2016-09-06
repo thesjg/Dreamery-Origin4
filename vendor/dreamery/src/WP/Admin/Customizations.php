@@ -44,7 +44,11 @@ class Customizations
             'description'   => $typeSettings['desc'],
         ));
         foreach ($typeSettings['keys'] as $cust_id => $cust) {
+            if ($cust['show'] === false)
+                continue;
+
             $setting_name = 'origin_theme_settings[' . $cust_id . ']';
+
             if ($cust['type'] == 'boolean') {
                 $wp_customize->add_setting($setting_name, array(
                     'type' => 'option',
@@ -177,6 +181,9 @@ class Customizations
             'description'   => $styleSettings['desc'],
         ));
         foreach ($styleSettings['keys'] as $cust_id => $cust) {
+            if ($cust['show'] === false)
+                continue;
+
             //$setting_name = $cust_id;
             $setting_name = 'origin_theme_settings[' . $cust_id . ']';
             $wp_customize->add_setting($setting_name, array(
@@ -201,6 +208,9 @@ class Customizations
          */
         $colorSettings = $settings['color'];
         foreach ($colorSettings['keys'] as $cust_id => $cust) {
+            if ($cust['show'] === false)
+                continue;
+
             $setting_name = 'origin_theme_settings[' . $cust_id . ']';
             $wp_customize->add_setting($setting_name, array(
                 'type' => 'option',

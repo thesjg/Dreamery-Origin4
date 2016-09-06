@@ -21,26 +21,31 @@ class Settings
             'desc' => '',
             'keys' => array(
                 'theme_excerpt_length' => array(
+                    'show' => true,
                     'name' => 'Excerpt Length',
                     'desc' => '',
                     'type' => 'number',
                     'default' => '200'),
                 'theme_title_separator' => array(
+                    'show' => true,
                     'name' => 'Title Separator',
                     'desc' => '',
                     'type' => 'text',
                     'default' => '|'),
                 'theme_analytics_gacode' => array(
+                    'show' => true,
                     'name' => 'Google Analytics UA Code',
                     'desc' => 'Example: UA-#######-1',
                     'type' => 'text',
                     'default' => ''),
                 'theme_injection_header' => array(
+                    'show' => true,
                     'name' => 'Header Extras (JS/CSS)',
                     'desc' => '',
                     'type' => 'textarea',
                     'default' => ''),
                 'theme_injection_bodyclose' => array(
+                    'show' => true,
                     'name' => 'Before Body Close Extras',
                     'desc' => '',
                     'type' => 'textarea',
@@ -55,11 +60,13 @@ class Settings
             'desc' => '',
             'keys' => array(
                 'theme_font_scheme_enable' => array(
+                    'show' => true,
                     'name' => 'Enable Theme Fonts',
                     'desc' => '',
                     'type' => 'boolean',
                     'default' => true),
                 'theme_font_scheme' => array(
+                    'show' => true,
                     'name' => 'Font Scheme',
                     'desc' => '',
                     'type' => 'select',
@@ -73,6 +80,7 @@ class Settings
                     )
                 ),
                 'theme_font_size_root' => array(
+                    'show' => true,
                     'name' => 'Root Font Size',
                     'desc' => 'Used to responsively scale all other typography',
                     'type' => 'number-units',
@@ -82,6 +90,7 @@ class Settings
                     'max' => 28,
                     'step' => 1),
                 'theme_font_size_base' => array(
+                    'show' => true,
                     'name' => 'Base Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -91,6 +100,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_font_size_h1' => array(
+                    'show' => true,
                     'name' => 'H1 Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -100,6 +110,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_font_size_h2' => array(
+                    'show' => true,
                     'name' => 'H2 Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -109,6 +120,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_font_size_h3' => array(
+                    'show' => true,
                     'name' => 'H3 Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -118,6 +130,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_font_size_h4' => array(
+                    'show' => true,
                     'name' => 'H4 Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -127,6 +140,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_font_size_h5' => array(
+                    'show' => true,
                     'name' => 'H5 Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -136,6 +150,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_font_size_h6' => array(
+                    'show' => true,
                     'name' => 'H6 Font Size',
                     'desc' => '',
                     'type' => 'number-units',
@@ -145,6 +160,7 @@ class Settings
                     'max' => 3.5,
                     'step' => .25),
                 'theme_line_height_base' => array(
+                    'show' => true,
                     'name' => 'Base Line Height',
                     'desc' => '',
                     'type' => 'number',
@@ -153,6 +169,7 @@ class Settings
                     'max' => 2.5,
                     'step' => .1),
                 'theme_line_height_heading' => array(
+                    'show' => true,
                     'name' => 'H1-H6 Line Height',
                     'desc' => '',
                     'type' => 'number',
@@ -167,87 +184,141 @@ class Settings
             'desc' => '',
             'keys' => array(
                 'theme_color_header_background' => array(
+                    'show' => false,
                     'name' => 'Header Background Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => ''),
                 'theme_color_body_background' => array(
+                    'show' => false,
                     'name' => 'Body Background Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => ''),
                 'theme_color_footer_background' => array(
+                    'show' => false,
                     'name' => 'Footer Background Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => ''),
                 'theme_color_text' => array(
+                    'show' => true,
                     'name' => 'Text Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => ''),
                 'theme_color_heading' => array(
+                    'show' => true,
                     'name' => 'H1-H6 Text Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => ''),
                 'theme_color_brand_primary' => array(
+                    'show' => true,
                     'name' => 'Brand Primary Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => '#0275d8'),
                 'theme_color_brand_success' => array(
+                    'show' => true,
                     'name' => 'Brand Success Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => '#5cb85c'),
                 'theme_color_brand_info' => array(
+                    'show' => true,
                     'name' => 'Brand Info Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => '#5bc0de'),
                 'theme_color_brand_warning' => array(
+                    'show' => true,
                     'name' => 'Brand Warning Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => '#f0ad4e'),
                 'theme_color_brand_danger' => array(
+                    'show' => true,
                     'name' => 'Brand Danger Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => '#d9543f'),
                 'theme_color_brand_inverse' => array(
+                    'show' => false,
                     'name' => 'Brand Inverse Color',
                     'desc' => '',
                     'type' => 'color',
                     'default' => ''),
             )
         ),
+        /*
+         * All of the background settings are opaque, WordPress Customizer
+         * has this functionality built in, we are pulling our info from WP
+         */
+        'background' => array(
+            'name' => 'Background Settings',
+            'desc' => '',
+            'keys' => array(
+                'theme_background_image' => array(
+                    'show' => false,
+                    'name' => 'Background Image',
+                    'desc' => '',
+                    'type' => 'text',
+                    'default' => ''),
+                /* XXX: Should repeat, position, and attachment be specified as a 'select', since we know all the options? */
+                'theme_background_repeat' => array(
+                    /* 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' */
+                    'show' => false,
+                    'name' => 'Background Repeat',
+                    'desc' => '',
+                    'type' => 'text',
+                    'default' => 'repeat'),
+                'theme_background_position' => array(
+                    /* 'center', 'right', 'left' */
+                    'show' => false,
+                    'name' => 'Background Image',
+                    'desc' => '',
+                    'type' => 'text',
+                    'default' => 'left'),
+                'theme_background_attachment' => array(
+                    /* 'fixed', 'scroll' */
+                    'show' => false,
+                    'name' => 'Background Attachment',
+                    'desc' => '',
+                    'type' => 'text',
+                    'default' => 'scroll'),
+            ),
+        ),
         'style' => array(
             'name' => 'Style Settings',
             'desc' => 'Global style settings that control a variety of site-wide presentation options',
             'keys' => array(
                 'theme_style_enable_flex' => array(
+                    'show' => true,
                     'name' => 'Enable Flex Display',
                     'desc' => 'Use "display: flex" instead of "float" and "display: table"',
                     'type' => 'boolean',
                     'default' => false),
                 'theme_style_enable_rounded' => array(
+                    'show' => true,
                     'name' => 'Enabled Rounded Corners',
                     'desc' => '',
                     'type' => 'boolean',
                     'default' => true),
                 'theme_style_enable_shadows' => array(
+                    'show' => true,
                     'name' => 'Enable Shadows',
                     'desc' => '',
                     'type' => 'boolean',
                     'default' => false),
                 'theme_style_enable_gradients' => array(
+                    'show' => true,
                     'name' => 'Enable Gradients',
                     'desc' => '',
                     'type' => 'boolean',
                     'default' => false),
                 'theme_style_enable_transitions' => array(
+                    'show' => true,
                     'name' => 'Enable Transitions',
                     'desc' => '',
                     'type' => 'boolean',
