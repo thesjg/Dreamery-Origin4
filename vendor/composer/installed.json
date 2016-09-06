@@ -72,9 +72,6 @@
             "squizlabs/php_codesniffer": "~2.5"
         },
         "time": "2016-01-15 02:50:06",
-        "bin": [
-            "bin/pscss"
-        ],
         "type": "library",
         "installation-source": "dist",
         "autoload": {
