@@ -1,0 +1,16 @@
+# Change Log
+
+## [0.0.2] 2016-09-01
+### Added
+- Most low-hanging Bootstrap4 settings are modifiable through the WP Customizer
+- Some additional theme settings editable through a custom settings page
+- Basic theme structure is in place, sans layout/templates
+
+## [0.0.1] 2016-05-20
+### Added
+- Implementation begins
+
+
+<!---
+http://keepachangelog.com/
+-->
