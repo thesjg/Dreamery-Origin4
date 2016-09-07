@@ -320,6 +320,7 @@ if (!function_exists('origin_enqueue_assets')) {
         wp_enqueue_style('bootstrap4', get_template_directory_uri() . '/style.scss');
         wp_enqueue_style('dreamery-origin4', get_template_directory_uri() . '/style.css', array('bootstrap4'));
 
+        wp_enqueue_script('bootstrap4', get_template_directory_uri() . '/vendor/twbs/bootstrap/dist/js/bootstrap.min.js');
         wp_enqueue_script('tether', '//raw.githubusercontent.com/HubSpot/tether/master/dist/js/tether.min.js');
     }
 
