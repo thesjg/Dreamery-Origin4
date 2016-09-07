@@ -228,5 +228,41 @@ class Customizations
                 )
             );
         }
+
+        /*
+         * Footer Settings
+         */
+        $footerSettings = $settings['footer'];
+        $wp_customize->add_section('origin_footer', array(
+            'title'         => $footerSettings['name'],
+            'description'   => $footerSettings['desc'],
+        ));
+        foreach ($footerSettings['keys'] as $cust_id => $cust) {
+            if ($cust['show'] == false)
+                continue;
+
+            $setting_name = 'origin_theme_settings[' . $cust_id . ']';
+            $wp_customize->add_setting($setting_name, array(
+                'type' => 'option',
+                'default' => $originSettings->getDefault($cust_id),
+            ));
+            $wp_customize->add_control(
+                new \Dreamery\WP\CustomizeNumberControl(
+                    $wp_customize,
+                    $setting_name,
+                    array(
+                        'section'   => 'origin_footer',
+                        'label'     => $cust['name'],
+                        'settings'  => $setting_name,
+                    ),
+                    array(
+                        'min' => $min,
+                        'max' => $max,
+                        'step' => $step,
+                        'default' => $originSettings->getDefault($cust_id),
+                    )
+                )
+            );
+        }
     }
 }

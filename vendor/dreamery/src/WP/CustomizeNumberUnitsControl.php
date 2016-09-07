@@ -11,7 +11,7 @@ use WP_Customize_Control;
  */
 class CustomizeNumberUnitsControl extends WP_Customize_Control
 {
-    public $type = 'boolean';
+    public $type = 'number-units';
     public $control;
 
     public function __construct($manager, $id, $args = array(), $control = array())

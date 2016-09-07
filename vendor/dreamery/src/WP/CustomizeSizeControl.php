@@ -11,7 +11,7 @@ use WP_Customize_Control;
  */
 class CustomizeSizeControl extends WP_Customize_Control
 {
-    public $type = 'boolean';
+    public $type = 'size';
     public $control;
 
     public function __construct($manager, $id, $args = array(), $control = array())
