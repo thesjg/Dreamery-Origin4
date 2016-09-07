@@ -325,6 +325,38 @@ class Settings
                     'default' => true),
             )
         ),
+        'footer' => array(
+            'name' => 'Footer Settings',
+            'desc' => '',
+            'keys' => array(
+                'theme_footer_rows' => array(
+                    'show' => true,
+                    'name' => 'Grid Rows',
+                    'desc' => 'Number of Footer Grid Rows for Widgets',
+                    'type' => 'number',
+                    'default' => 0),
+                /* Maybe this shouldn't actually be built in */
+                /* Maybe we need a 'multiple' option? */
+                /* Maybe we need a 'parent' option? */
+                'theme_footer_row_option_columns' => array(
+                    'show' => false,
+                    'name' => 'Column Layout for Row',
+                    'desc' => '',
+                    'type' => 'select',
+                    'options' => array(
+                        '6-6'              =>  '6-6',
+                        '4-4-4'            =>  '4-4-4',
+                        '4-8'              =>  '4-8',
+                        '8-4'              =>  '8-4',
+                        '3-3-3-3'          =>  '3-3-3-3',
+                        '2-10'             =>  '2-10',
+                        '10-2'             =>  '10-2',
+                        '3-9'              =>  '3-9',
+                        '9-3'              =>  '9-3',
+                    )
+                ),
+            )
+        ),
     );
 
     final private function __construct()

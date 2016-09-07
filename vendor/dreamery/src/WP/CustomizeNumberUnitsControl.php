@@ -9,7 +9,7 @@ use WP_Customize_Control;
  * Pixels, em's, points?
  * min, max?
  */
-class CustomizeNumberControl extends WP_Customize_Control
+class CustomizeNumberUnitsControl extends WP_Customize_Control
 {
     public $type = 'boolean';
     public $control;
@@ -48,7 +48,6 @@ class CustomizeNumberControl extends WP_Customize_Control
 
     public function render_content()
     {
-
         ?>
         <label for="">
             <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
@@ -69,7 +68,6 @@ class CustomizeNumberControl extends WP_Customize_Control
             </select>
 
         </label>
-
         <?php
     }
 }

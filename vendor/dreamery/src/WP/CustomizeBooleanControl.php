@@ -10,21 +10,13 @@ use WP_Customize_Control;
 class CustomizeBooleanControl extends WP_Customize_Control
 {
     public $type = 'boolean';
-/*
-    public function __construct()
-    {
-        parent::__construct();
-    }
-*/
 
     public function render_content()
     {
-
 ?>
 <label for="">
     <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
 
-<form name="xx" onload="document.forms['xx'].reset();">
     <select name="" data-customize-setting-link="<?php echo $this->id; ?>" autocomplete="off">
     <?php
     if ($this->value() === true) {
@@ -37,10 +29,7 @@ class CustomizeBooleanControl extends WP_Customize_Control
 
     ?>
 </select>
-</form>
-
 </label>
-
 <?php
     }
 }

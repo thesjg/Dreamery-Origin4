@@ -137,7 +137,7 @@ class Customizations
                         $step = $cust['step'];
 
                     $wp_customize->add_control(
-                        new \Dreamery\WP\CustomizeNumberControl(
+                        new \Dreamery\WP\CustomizeNumberUnitsControl(
                             $wp_customize,
                             $setting_name,
                             array(

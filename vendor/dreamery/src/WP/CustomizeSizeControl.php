@@ -36,7 +36,6 @@ class CustomizeSizeControl extends WP_Customize_Control
             $originSettings = \Dreamery\WP\Settings::getInstance();
             $default = $originSettings->getDefault($id); // this ID will be in an arry? no worky?
             if (!$default) {
-//                $default = 10; // XXX
                 throw new \Exception('default for control must be specified');
             }
         }
@@ -45,17 +44,14 @@ class CustomizeSizeControl extends WP_Customize_Control
         // Verify min is less than max, etc.
         // verify min, max, step are all numeric
 
-
         $this->control = $control;
     }
 
     public function render_content()
     {
-
         ?>
         <label for="">
             <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
-
             <select name="" data-customize-setting-link="<?php echo $this->id; ?>" autocomplete="off">
                 <?php
                 for ($i = $this->control['min']; $i <= $this->control['max']; $i += $this->control['step']) {
@@ -70,9 +66,7 @@ class CustomizeSizeControl extends WP_Customize_Control
                 }
                 ?>
             </select>
-
         </label>
-
         <?php
     }
 }
