@@ -9,6 +9,14 @@ use Dreamery\WP\Settings;
 require get_template_directory() . '/vendor/autoload.php';
 require get_template_directory() . '/vendor/dreamery/autoload.php';
 
+/**
+ * Max content width (max image width)
+ * Rationale: based on the width of a .col-lg-8
+ */
+if (!isset($content_width)) {
+    $content_width = 760;
+}
+
 if (!function_exists('origin_theme_support_custom_header')) {
     function origin_theme_support_custom_header() {
         $args = array(
@@ -355,30 +363,6 @@ if (!function_exists('origin_register_navigation')) {
  */
 $originSettingsDefaults = array(
     'compile_scss' =>            true,
-
-//    'font_family_base' =>        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
-    'font_size_base' =>          '16px',
-    'font_size_h1' =>            '2.5rem',
-    'font_size_h2' =>            '2rem',
-    'font_size_h3' =>            '1.75rem',
-    'font_size_h4' =>            '1.5rem',
-    'font_size_h5' =>            '1.25rem',
-    'font_size_h6' =>            '1rem',
-/*
-    'line_height_base' =>        '1.5',
-    'line_height_heading' =>     '1.1',
-*/
-    'color_header_background' => '#fff',
-    'color_body_background' => '#fff',
-    'color_footer_background' => '#fff',
-    'color_text' => '#373a3c',
-    'color_heading' => '#373a3c',
-    'color_brand_primary' => '#0275d8',
-    'color_brand_success' => '#5cb85c',
-    'color_brand_info' => '#5bc0de',
-    'color_brand_warning' => '#f0ad4e',
-    'color_brand_danger' => '#d9534f',
-    'color_brand_inverse' => '#373a3c',
 );
 
 if (get_stylesheet_directory() != get_template_directory()) {
@@ -396,8 +380,9 @@ function origin_get_setting($setting) {
     return $settings->$setting;
 }
 
-$adminSettings = new Dreamery\WP\Admin\Settings;
-$adminCustomizations = new Dreamery\WP\Admin\Customizations;
+new Dreamery\WP\Admin\Settings;
+new Dreamery\WP\Admin\Customizations;
+new Dreamery\WP\WooCommerceSupport;
 
 /*
  * Turn various WordPress knobs based on theme settings
