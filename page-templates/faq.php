@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: FAQ
+ * Template Post Type: page
  */
 
 get_header();

@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: Team
+ * Template Post Type: page
  */
 
 get_header();

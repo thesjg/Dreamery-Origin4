@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: Clients
+ * Template Post Type: page
  */
 
 get_header();
