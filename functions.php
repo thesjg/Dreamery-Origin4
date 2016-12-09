@@ -341,7 +341,7 @@ if (!function_exists('origin_theme_filter_templates')) {
             }, ARRAY_FILTER_USE_BOTH);
         }
         return $post_templates;
-   }
+    }
     add_filter('theme_page_templates', 'origin_theme_filter_templates');
 }
 
