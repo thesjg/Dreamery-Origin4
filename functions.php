@@ -323,6 +323,27 @@ function dreamery_post_gallery($string, $attr){
 }
 add_filter('post_gallery', 'dreamery_post_gallery', 10, 2);
 
+/*
+ * Filter out non-Page templates on WP versions before 4.7
+ */
+if (!function_exists('origin_theme_filter_templates')) {
+    function origin_theme_filter_templates($post_templates) {
+        if (version_compare($GLOBALS['wp_version'], '4.7', '<')) {
+            array_filter($post_templates, function($template_path){
+                $match = 'templates/page';
+                if (strncmp($template_path, $match, strlen($match))) {
+                    return true;
+                }
+                return false;
+            });
+        }
+    }
+    add_filter('theme_page_templates', 'origin_theme_filter_templates');
+}
+
+/*
+ * Enqueue our css/js assets
+ */
 if (!function_exists('origin_enqueue_assets')) {
     function origin_enqueue_assets() {
         wp_enqueue_style('bootstrap4', get_template_directory_uri() . '/style.scss');
