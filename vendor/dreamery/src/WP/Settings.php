@@ -188,31 +188,31 @@ class Settings
                     'name' => 'Header Background Color',
                     'desc' => '',
                     'type' => 'color',
-                    'default' => ''),
+                    'default' => '#fff'),
                 'theme_color_body_background' => array(
                     'show' => false,
                     'name' => 'Body Background Color',
                     'desc' => '',
                     'type' => 'color',
-                    'default' => ''),
+                    'default' => '#fff'),
                 'theme_color_footer_background' => array(
                     'show' => false,
                     'name' => 'Footer Background Color',
                     'desc' => '',
                     'type' => 'color',
-                    'default' => ''),
+                    'default' => '#fff'),
                 'theme_color_text' => array(
                     'show' => true,
                     'name' => 'Text Color',
                     'desc' => '',
                     'type' => 'color',
-                    'default' => ''),
+                    'default' => '#000'),
                 'theme_color_heading' => array(
                     'show' => true,
                     'name' => 'H1-H6 Text Color',
                     'desc' => '',
                     'type' => 'color',
-                    'default' => ''),
+                    'default' => '#000'),
                 'theme_color_brand_primary' => array(
                     'show' => true,
                     'name' => 'Brand Primary Color',
@@ -248,7 +248,7 @@ class Settings
                     'name' => 'Brand Inverse Color',
                     'desc' => '',
                     'type' => 'color',
-                    'default' => ''),
+                    'default' => '#373a3c'),
             )
         ),
         /*
@@ -449,7 +449,7 @@ class Settings
         /*
          * Are we in the customizer?
          *
-         * TODO: Selectively re-compile css, different output file for the admin
+         * XXX TODO: Selectively re-compile css, different output file for the admin
          * preview vs the frontend?
          *
          * Use is_customize_preview() to determine if in the customizer

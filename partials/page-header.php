@@ -7,7 +7,7 @@ if (function_exists('the_custom_logo')) {
     $logo = the_custom_logo();
 }
 if (empty($logo)) {
-    echo '<a href="/"><img src="' . get_template_directory_uri() . '/assets/img/origin4-logo.png"></a>';
+    echo '<a href="/"><img src="' . get_template_directory_uri() . '/assets/img/logo.png"></a>';
 } else {
     echo $logo;
 }
@@ -18,3 +18,5 @@ if (empty($logo)) {
         </div>
     </div>
 </header>
+<?php
+get_template_part('partials/navigation-primary');

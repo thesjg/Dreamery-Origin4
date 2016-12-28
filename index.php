@@ -1,8 +1,6 @@
 <?php
 
 get_header();
-get_template_part('partials/page-header');
-get_template_part('partials/navigation-primary');
 
 ?>
 <div class="container">
@@ -17,5 +15,4 @@ while (have_posts()) {
 </div>
 <?php
 
-get_template_part('partials/page-footer');
 get_footer();

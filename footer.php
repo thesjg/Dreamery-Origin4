@@ -1,4 +1,5 @@
 <?php
+    get_template_part('partials/page-footer');
     wp_footer();
     echo origin_get_setting('theme_injection_bodyclose');
 
