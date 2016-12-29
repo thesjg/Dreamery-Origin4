@@ -72,19 +72,8 @@ class NavMenuWalker extends Walker {
             $elementById[$element['parent_id']]['children_ids'][] = $key;
         }
 
-        /* Assemble the hierarchy */
-        function assembleChildren($elementById, $element, $max_depth, $depth = 0) {
-            if ($depth >= $max_depth) {
-                return $element;
-            }
-            $depth++;
-            foreach ($element['children_ids'] as $child_id) {
-                $element['children'][] = assembleChildren($elementById, $elementById[$child_id], $max_depth, $depth);
-            }
-            return $element;
-        }
         foreach ($elementRootIds as $root_id) {
-            $elementRoots[] = assembleChildren($elementById, $elementById[$root_id], $max_depth);
+            $elementRoots[] = $this->assembleChildren($elementById, $elementById[$root_id], $max_depth);
         }
 
         /* Throw away the bits we no longer need */
@@ -96,6 +85,18 @@ class NavMenuWalker extends Walker {
             $output .= $t->render('navigation-menu-element', $element);
         }
         return $output;
+    }
+
+    /* Assemble the hierarchy */
+    private function assembleChildren($elementById, $element, $max_depth, $depth = 0) {
+        if ($depth >= $max_depth) {
+            return $element;
+        }
+        $depth++;
+        foreach ($element['children_ids'] as $child_id) {
+            $element['children'][] = $this->assembleChildren($elementById, $elementById[$child_id], $max_depth, $depth);
+        }
+        return $element;
     }
 
     /*
