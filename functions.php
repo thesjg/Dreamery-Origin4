@@ -363,10 +363,13 @@ if (!function_exists('origin_enqueue_assets')) {
 /*
  * Add img-fluid to all WP-managed images
  */
-function origin_image_tag_class($class){
-    return $class . ' img-fluid';
+if (!function_exists('origin_image_tag_class')) {
+    function origin_image_tag_class($class) {
+        return $class . ' img-fluid';
+    }
+
+    add_filter('get_image_tag_class', 'origin_image_tag_class');
 }
-add_filter('get_image_tag_class','origin_image_tag_class');
 
 if (!function_exists('origin_register_navigation')) {
     function origin_register_navigation() {
@@ -381,6 +384,29 @@ if (!function_exists('origin_register_navigation')) {
     }
     add_action('init', 'origin_register_navigation');
 }
+
+if (!function_exists('origin_register_sidebars')) {
+    function origin_register_sidebars() {
+        register_sidebar(array(
+            'name'              => 'Footer Widget Area 1',
+            'id'                => 'footer_widget_1',
+            'before_widget'     => '',
+            'after_widget'      => '',
+            'before_title'      => '',
+            'after_title'       => '',
+        ));
+        register_sidebar(array(
+            'name'              => 'Footer Widget Area 2',
+            'id'                => 'footer_widget_2',
+            'before_widget'     => '',
+            'after_widget'      => '',
+            'before_title'      => '',
+            'after_title'       => '',
+        ));
+    }
+    add_action('widgets_init', 'origin_register_sidebars');
+}
+
 
 
 /*
