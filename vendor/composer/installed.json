@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.0.17"
         },
-        "time": "2016-05-05 10:36:47",
+        "time": "2016-05-05T10:36:47+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -50,17 +50,17 @@
     },
     {
         "name": "leafo/scssphp",
-        "version": "v0.6.3",
-        "version_normalized": "0.6.3.0",
+        "version": "v0.6.7",
+        "version_normalized": "0.6.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/leafo/scssphp.git",
-            "reference": "a27edad3d16635a222d7204706572e24c338aa17"
+            "reference": "562213cd803e42ea53b0735554794c4022d8db89"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/leafo/scssphp/zipball/a27edad3d16635a222d7204706572e24c338aa17",
-            "reference": "a27edad3d16635a222d7204706572e24c338aa17",
+            "url": "https://api.github.com/repos/leafo/scssphp/zipball/562213cd803e42ea53b0735554794c4022d8db89",
+            "reference": "562213cd803e42ea53b0735554794c4022d8db89",
             "shasum": ""
         },
         "require": {
@@ -71,7 +71,10 @@
             "phpunit/phpunit": "~3.7",
             "squizlabs/php_codesniffer": "~2.5"
         },
-        "time": "2016-01-15 02:50:06",
+        "time": "2017-02-23T05:07:33+00:00",
+        "bin": [
+            "bin/pscss"
+        ],
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -98,6 +101,59 @@
             "sass",
             "scss",
             "stylesheet"
+        ]
+    },
+    {
+        "name": "twbs/bootstrap",
+        "version": "v4.0.0-beta.2",
+        "version_normalized": "4.0.0.0-beta2",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twbs/bootstrap.git",
+            "reference": "fc94de5b8b5b329a298eeeb76174b146ff17af2d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twbs/bootstrap/zipball/fc94de5b8b5b329a298eeeb76174b146ff17af2d",
+            "reference": "fc94de5b8b5b329a298eeeb76174b146ff17af2d",
+            "shasum": ""
+        },
+        "replace": {
+            "twitter/bootstrap": "self.version"
+        },
+        "time": "2017-10-19T19:23:29+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jacob Thornton",
+                "email": "jacobthornton@gmail.com"
+            },
+            {
+                "name": "Mark Otto",
+                "email": "markdotto@gmail.com"
+            }
+        ],
+        "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+        "homepage": "https://getbootstrap.com",
+        "keywords": [
+            "JS",
+            "css",
+            "framework",
+            "front-end",
+            "mobile-first",
+            "responsive",
+            "sass",
+            "web"
         ]
     }
 ]
